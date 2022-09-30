@@ -28,6 +28,7 @@ function App() {
   const runApp = () => {
     const idToken = liff.getIDToken();
     setIdToken(idToken);
+    localStorage.setItem("token", idToken)
     liff.getProfile().then(profile => {
       console.log(profile);
       setDisplayName(profile.displayName);
@@ -38,7 +39,8 @@ function App() {
   }
 
   useEffect(() => {
-    initLine();
+    // initLine();
+    console.log("local", localStorage.getItem("token"));
   }, []);
 
   return (
@@ -53,6 +55,7 @@ function App() {
           <p style={{ textAlign: "left", marginLeft: "20%", marginRight: "20%", wordBreak: "break-all" }}><b>status message: </b> {statusMessage}</p>
           <p style={{ textAlign: "left", marginLeft: "20%", marginRight: "20%", wordBreak: "break-all" }}><b>user id: </b> {userId}</p>
 
+          <button onClick={() => initLine()} style={{ width: "100%", height: 30 }}>Login</button>
           <button onClick={() => logout()} style={{ width: "100%", height: 30 }}>Logout</button>
         </div>
       </header>
