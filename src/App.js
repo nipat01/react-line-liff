@@ -31,16 +31,29 @@ function App() {
     localStorage.setItem("token", idToken)
     liff.getProfile().then(profile => {
       console.log(profile);
+
       setDisplayName(profile.displayName);
       setPictureUrl(profile.pictureUrl);
       setStatusMessage(profile.statusMessage);
       setUserId(profile.userId);
+
+      localStorage.setItem("displayName", profile.displayName);
+      localStorage.setItem("pictureUrl", profile.pictureUrl);
+      localStorage.setItem("statusMessage", profile.statusMessage);
+      localStorage.setItem("userId", profile.userId);
     }).catch(err => console.error(err));
   }
 
+
+
   useEffect(() => {
     // initLine();
-    console.log("local", localStorage.getItem("token"));
+    const displayName = localStorage.getItem("displayName");
+    console.log("displayName: ", displayName);
+    if (displayName) {
+
+      setDisplayName(displayName);
+    }
   }, []);
 
   return (
