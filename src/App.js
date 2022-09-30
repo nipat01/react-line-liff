@@ -29,7 +29,7 @@ function App() {
   const runApp = () => {
     const idToken = liff.getIDToken();
     setIdToken(idToken);
-    localStorage.setItem("token", idToken)
+    localStorage.setItem("idToken", idToken)
     liff.getProfile().then(profile => {
       console.log(profile);
 
