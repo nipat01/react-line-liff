@@ -12,6 +12,7 @@ function App() {
 
   const logout = () => {
     liff.logout();
+    localStorage.clear();
     window.location.reload();
   }
 
@@ -49,10 +50,18 @@ function App() {
   useEffect(() => {
     // initLine();
     const displayName = localStorage.getItem("displayName");
+    const pictureUrl = localStorage.getItem("pictureUrl");
+    const statusMessage = localStorage.getItem("statusMessage");
+    const userId = localStorage.getItem("userId");
     console.log("displayName: ", displayName);
+    console.log("pictureUrl: ", pictureUrl);
+    console.log("statusMessage: ", statusMessage);
+    console.log("userId: ", userId);
     if (displayName) {
-
       setDisplayName(displayName);
+      setPictureUrl(pictureUrl);
+      setStatusMessage(statusMessage);
+      setUserId(userId);
     }
   }, []);
 
